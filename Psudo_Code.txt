@@ -2,15 +2,15 @@
 
 START
 DISPLAY "enter assignment score(out of 100):"
-INPUT assignmentscore
+INPUT ascore
  
 DISPLAY "enter assignment exam score(out of 100)"
-INPUT midtermscore
+INPUT mscore
  
 DISPLAY "enter final exam score(out of 100)"
-INPUT finalscore
+INPUT fscore
 
-SET finalgrade=(assignmentscore*0.30)+(midtermscore*0.30)+(finalexamscore*0.40)
+SET finalgrade=(acore*0.30)+(mscore*0.30)+(fscore*0.40)
 IF finalgrade>=60 THEN
  SET status="pass"
 ELSE
@@ -24,98 +24,100 @@ END
 2.ATM BANKING SYSTEM
 
 START 
-DISPLAY"enter your pin:"
-INPUT userpin
-IF userpin is incorrect THEN 
-DISPLAY "invalid pin try again."
-EXIT
-ENDIF
-SET balance=1000
-REPEAT
-DISPLAY"ATM menu:"
-DISPLAY"1.check balance"
-DISPLAY"2.deposit money"
-DISPLAY"3.withdraw money"
-DISPLAY"4.exit"
-DISPLAY"choose an option:"
-INPUT choice
+	DISPLAY"enter your pin:"
+	INPUT userpin
+		IF userpin is incorrect THEN 
+			DISPLAY "invalid pin try again."
+			EXIT
+		ENDIF
+	SET balance=1000
+	REPEAT
+	DISPLAY"ATM menu:"
+	DISPLAY"1.check balance"
+	DISPLAY"2.deposit money"
+	DISPLAY"3.withdraw money"
+	DISPLAY"4.exit"
+	DISPLAY"choose an option:"
+	INPUT choice
 
-IF choice=1 THEN
-DISPLAY "your balance is",balance
-ELSE IF choice=2 THEN
-DISPLAY"enter amount to deposit:"
-INPUT depositAmount
-  SET balance = balance + depositAmount
-  DISPLAY "Deposit successful. New balance: ", balance
-  ELSE IF choice = 3 THEN
-  DISPLAY "Enter amount to withdraw:"
-  INPUT withdrawAmount
-  IF withdrawAmount > balance THEN
-  DISPLAY "Insufficient funds!"
-ELSE
- SET balance = balance - withdrawAmount
-DISPLAY "Withdrawal successful. New balance: ", balance
-ENDIF
-ELSE IF choice = 4 THEN
-DISPLAY "Thank you for using our ATM."
-EXIT
-ELSE
-DISPLAY "Invalid choice. Please try again."
- ENDIF
-    UNTIL choice = 4
+	IF choice=1 THEN
+		DISPLAY "your balance is",balance
+		ELSE IF choice=2 THEN
+		DISPLAY"enter amount to deposit:"
+		INPUT depositAmount
+  		SET balance = balance + depositAmount
+  		DISPLAY "Deposit successful. New balance: ", balance
+  	ELSE IF choice = 3 THEN
+  		DISPLAY "Enter amount to withdraw:"
+ 		 INPUT withdrawAmount
+  		IF withdrawAmount > balance THEN
+  		DISPLAY "Insufficient funds!"
+	ELSE
+ 		SET balance = balance - withdrawAmount
+		DISPLAY "Withdrawal successful. New balance: ", balance
+	ENDIF
+	ELSE IF choice = 4 THEN
+		DISPLAY "Thank you for using our ATM."
+	EXIT
+	ELSE
+		DISPLAY "Invalid choice. Please try again."
+	 ENDIF
+   	 UNTIL choice = 4
 END
+
+
+
  
 3. Inventory Management System
 
 START
+	DECLARE inventory as a list
 
-DECLARE inventory as a list
+	FUNCTION addProduct(id, name, price, quantity)
+    	CREATE product as dictionary with keys (id, name, price, quantity)
+    	ADD product to inventory
+    	DISPLAY "Product added successfully."
 
-FUNCTION addProduct(id, name, price, quantity)
-    CREATE product as dictionary with keys (id, name, price, quantity)
-    ADD product to inventory
-    DISPLAY "Product added successfully."
-
-FUNCTION updateProduct(id, new_price, new_quantity)
-    FOR each product in inventory
-        IF product.id == id THEN
+	FUNCTION updateProduct(id, new_price, new_quantity)
+    	FOR each product in inventory
+        	IF product.id == id THEN
             SET product.price = new_price
             SET product.quantity = new_quantity
             DISPLAY "Product updated successfully."
             RETURN
-    DISPLAY "Product not found."
+    	  DISPLAY "Product not found."
 
-FUNCTION removeProduct(id)
-    FOR each product in inventory
-        IF product.id == id THEN
+	FUNCTION removeProduct(id)
+   	 FOR each product in inventory
+       	 IF product.id == id THEN
             REMOVE product from inventory
             DISPLAY "Product removed successfully."
             RETURN
-    DISPLAY "Product not found."
+    	DISPLAY "Product not found."
 
-FUNCTION searchProduct(id_or_name)
-    FOR each product in inventory
-        IF product.id == id_or_name OR product.name == id_or_name THEN
+	FUNCTION searchProduct(id_or_name)
+    	FOR each product in inventory
+       	 IF product.id == id_or_name OR product.name == id_or_name THEN
             DISPLAY product details
             RETURN
-    DISPLAY "Product not found."
+    	DISPLAY "Product not found."
 
-FUNCTION displayInventory()
-    IF inventory is empty THEN
+	FUNCTION displayInventory()
+    	IF inventory is empty THEN
         DISPLAY "Inventory is empty."
-    ELSE
-        FOR each product in inventory
+   	 ELSE
+        	FOR each product in inventory
             DISPLAY product details
 
-FUNCTION trackLowStock(threshold)
-    FOR each product in inventory
-        IF product.quantity < threshold THEN
+	FUNCTION trackLowStock(threshold)
+    	FOR each product in inventory
+        	IF product.quantity < threshold THEN
             DISPLAY "Low stock:", product details
 
-FUNCTION generateReport()
-    DISPLAY "Inventory Report:"
-    DISPLAY "Total Products:", COUNT(inventory)
-    DISPLAY all product details
+	FUNCTION generateReport()
+    	DISPLAY "Inventory Report:"
+    	DISPLAY "Total Products:", COUNT(inventory)
+    	DISPLAY all product details
 
 LOOP
     DISPLAY "1. Add Product"
@@ -142,10 +144,11 @@ LOOP
 
 END
 
+
+
 4. Prime Number Checker
 
 START
-
 FUNCTION isPrime(number)
     IF number <= 1 THEN
         RETURN false
@@ -173,13 +176,12 @@ LOOP
     INPUT choice
     IF choice is "no" THEN
         EXIT LOOP
-
 END
+
 
 5. Temperature Conversion Tool
 
 START
-
 FUNCTION convertTemperature(value, sourceUnit, targetUnit)
     IF sourceUnit == "C" AND targetUnit == "F" THEN
         RETURN (value * 9/5) + 32
@@ -216,11 +218,12 @@ LOOP
 
 END
 
+
+
 6. Library Book Management System
 
 
   START
-
 DEFINE Book class:
     Attributes: title, author, ISBN, status (Available/Checked Out)
 
@@ -273,11 +276,11 @@ LOOP
 
 END
 
+
+
 7. Fibonacci Sequence Generator
 
-
 START
-
 FUNCTION generate_fibonacci(n):
     IF n <= 0 THEN
         DISPLAY "Enter a positive integer"
@@ -317,6 +320,7 @@ LOOP
     IF repeat == "no" THEN EXIT LOOP
 
 END
+
 
 8. Calendar Event Scheduler
 
