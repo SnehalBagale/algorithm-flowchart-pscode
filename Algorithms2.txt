@@ -1,0 +1,148 @@
+ Student Grade Calculator
+Algorithm:
+
+Start
+Display "Enter assignment score (out of 100):"
+Input ascore
+Display "Enter midterm exam score (out of 100):"
+Input mscore
+Display "Enter final exam score (out of 100):"
+Input fscore
+Calculate finalgrade = (ascore * 0.30) + (mscore * 0.30) + (fscore * 0.40)
+If finalgrade >= 60, then set status = "pass", otherwise status = "fail"
+Display "Final Grade:", finalgrade
+Display "Status:", status
+End
+
+
+2. ATM Banking System
+Algorithm:
+
+Start
+Display "Enter your PIN:"
+Input userpin
+If userpin is incorrect, display "Invalid PIN. Try again." and exit
+Set balance = 1000
+Repeat:
+	a. Display ATM menu
+	b. Input choice
+	c. If choice == 1, display balance
+	d. If choice == 2, input depositAmount, update balance = balance + depositAmount, 	display new balance
+	e. If choice == 3, input withdrawAmount, check if withdrawAmount > balance, if yes 	display "Insufficient funds", else update balance = balance - withdrawAmount
+	f. If choice == 4, display "Thank you for using our ATM" and exit
+	g. Else, display "Invalid choice. Try again."
+Until choice == 4
+End
+
+
+3. Inventory Management System
+Algorithm:
+
+Start
+Initialize inventory as an empty list
+Define functions for:
+	addProduct(id, name, price, quantity): Add product to inventory
+	updateProduct(id, new_price, new_quantity): Update price and quantity
+	removeProduct(id): Remove product
+	searchProduct(id_or_name): Search by ID or name
+	displayInventory(): Display all products
+	trackLowStock(threshold): Show products below threshold
+	generateReport(): Display total products
+Display menu
+Get choice and call the corresponding function
+If choice == 8, exit
+End
+
+
+
+4. Prime Number Checker
+Algorithm:
+
+Start
+Define isPrime(number):
+	a. If number ≤ 1, return False
+	b. If number == 2, return True
+	c. Loop i from 2 to sqrt(number):
+		If number MOD i == 0, return False
+		d. Return True
+Loop:
+	a. Input number
+	b. If invalid, display error and continue
+	c. If isPrime(number), display "Prime", else "Not Prime"
+	d. Ask if user wants to continue; if "no", exit
+End
+
+
+5. Temperature Conversion Tool
+Algorithm:
+
+Start
+Define convertTemperature(value, sourceUnit, targetUnit):
+	a. Convert based on unit conversion formulas
+Loop:
+	a. Input value, sourceUnit, targetUnit
+	b. Compute convertedValue = convertTemperature(value, sourceUnit, targetUnit)
+	c. Display convertedValue
+	d. Ask if user wants another conversion; if "no", exit
+End
+
+
+6. Library Book Management System
+Algorithm:
+
+Start
+Define Book class with attributes
+Define Member class with attributes
+Define Library class with:
+	add_book(title, author, ISBN)
+	remove_book(ISBN)
+	register_member(name, member_id)
+	checkout_book(member_id, ISBN)
+	return_book(member_id, ISBN)
+	search_book(query)
+	generate_overdue_report()
+Loop:
+	a. Display menu
+	b. Get choice and call the corresponding function
+	c. If choice == Exit, exit loop
+End
+
+
+7. Fibonacci Sequence Generator
+Algorithm:
+
+Start
+Define generate_fibonacci(n):
+	a. If n ≤ 0, display error
+	b. If n == 1, return [0]
+	c. If n == 2, return [0, 1]
+	d. Initialize sequence = [0, 1]
+	e. Loop from 2 to n-1, compute next_term = sequence[i-1] + sequence[i-2], append 	to sequence
+	f. Return sequence
+Define save_to_file(sequence): Write to "fibonacci.txt"
+Loop:
+	a. Input n, validate
+	b. Compute result = generate_fibonacci(n)
+	c. Display result
+	d. Ask if user wants to save; if "yes", call save_to_file(result)
+	e. Ask if user wants another sequence; if "no", exit
+End
+
+
+8. Calendar Event Scheduler
+Algorithm:
+
+Start
+Define event_list as empty
+Define functions:
+	add_event(title, date, time, description): Validate and add event
+	display_events(filter_type, filter_value): Show filtered events
+	search_event(keyword): Search events
+	delete_event(title, date, time): Remove event
+	modify_event(title, date, time, new_details): Update event
+	set_reminder(title, date, time, reminder_time): Set reminder
+Loop:
+	a. Display menu
+	b. Input choice and call the function
+	c. If choice == Exit, exit
+End
